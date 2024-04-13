@@ -10,15 +10,15 @@ export default function InstalledApps() {
   );
 
   return (
-    <div className="w-full bg-[white] rounded-xl flex flex-col">
+    <div className="w-full bg-[white] rounded-xl flex flex-col select-none">
       <div className="w-full flex flex-row justify-between items-center">
-        <div className="select-none text-[#282828] w-full text-[18px] font-semibold p-5 border-b border-[#EAECF0]">
+        <div className="max-[1024px]:px-4 max-[1024px]:py-[14px] select-none text-[#282828] w-full text-[18px] font-semibold p-5 border-b border-[#EAECF0]">
           Installed apps
         </div>
       </div>
-      <div className="w-full flex flex-row justify-between items-center">
-        <div className="w-full">
-          <table className="table-auto w-full text-left select-none ">
+      <div className="w-full flex flex-col justify-between items-center">
+        <div className="w-full overflow-auto">
+          <table className="table-auto w-full max-[1024px]:w-[1240px] max-[1024px] text-left select-none ">
             <thead>
               <tr className="bg-[#F9FAFB] text-[#5F6980] font-light text-[14px]">
                 <th className="pl-6 font-normal py-4 w-[19%]">Source</th>
@@ -83,35 +83,35 @@ export default function InstalledApps() {
                 ))}
             </tbody>
           </table>
-          <div className="w-full h-[92px] flex flex-row justify-center items-center gap-3">
-            <button
-              onClick={() => dispatch(installedAppsPrevPage())}
-              className={`${
-                installedApps.page == 1
-                  ? "cursor-default"
-                  : "hover:bg-[#F2F4F7] rounded"
-              }`}
-            >
-              <img src="/icons/arrow-left.svg" />
-            </button>
+        </div>
+        <div className="w-full h-[92px] flex flex-row justify-center items-center gap-3">
+          <button
+            onClick={() => dispatch(installedAppsPrevPage())}
+            className={`${
+              installedApps.page == 1
+                ? "cursor-default"
+                : "hover:bg-[#F2F4F7] rounded"
+            }`}
+          >
+            <img src="/icons/arrow-left.svg" />
+          </button>
 
-            <div>
-              {installedApps.page}/
-              {Math.ceil(installedApps.data.length / installedApps.size)}
-            </div>
-
-            <button
-              onClick={() => dispatch(installedAppsNextPage())}
-              className={`${
-                installedApps.page ==
-                Math.ceil(installedApps.data.length / installedApps.size)
-                  ? "cursor-default"
-                  : "hover:bg-[#F2F4F7] rounded"
-              }`}
-            >
-              <img src="/icons/arrow-right.svg" />
-            </button>
+          <div>
+            {installedApps.page}/
+            {Math.ceil(installedApps.data.length / installedApps.size)}
           </div>
+
+          <button
+            onClick={() => dispatch(installedAppsNextPage())}
+            className={`${
+              installedApps.page ==
+              Math.ceil(installedApps.data.length / installedApps.size)
+                ? "cursor-default"
+                : "hover:bg-[#F2F4F7] rounded"
+            }`}
+          >
+            <img src="/icons/arrow-right.svg" />
+          </button>
         </div>
       </div>
     </div>

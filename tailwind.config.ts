@@ -17,6 +17,8 @@ const config: Config = {
         custom: "0 1px 10px rgba(0, 0, 0, 0.06)",
       },
     },
+
+    
   },
   plugins: [],
 };

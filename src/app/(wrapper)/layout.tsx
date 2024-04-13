@@ -1,11 +1,13 @@
 "use client";
 import { Collapse } from "antd";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Wrapper({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
+
+  const [sideMenuCollapsed, setSideMenuCollapsed] = useState(false);
 
   const iconbuttons = [
     {
@@ -113,13 +115,39 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
     indicator: boolean;
   };
 
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(event: MouseEvent) {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setSideMenuCollapsed(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+    };
+  }, [ref]);
+
   return (
-    <div className="bg-[#F2F4F7] w-screen h-screen flex flex-row">
-      <div className="h-full bg-[white] w-[232px] shrink-0 flex flex-col overflow-y-auto">
-        <div className="px-5 pt-[23.26px] mb-[54px] select-none pointer-events-none">
+    <div className="bg-[#F2F4F7] max-[1024px]:bg-[white] ani w-screen h-screen flex flex-row">
+      <div
+        ref={ref}
+        className={`max-[1024px]:absolute border-b border-transparent max-[1024px]:shadow-2xl ${
+          sideMenuCollapsed
+            ? "max-[1024px]:translate-x-[0%]"
+            : "max-[1024px]:translate-x-[-100%]"
+        } h-full bg-[white] w-[232px] shrink-0 flex flex-col overflow-y-auto ani`}
+      >
+        <button
+          onClick={() => setSideMenuCollapsed(false)}
+          className="px-5 pt-[23.26px] mb-[48px] select-none min-[1024px]:pointer-events-none"
+        >
           <img src="/logo/Branding.svg" />
-        </div>
-        <div className="flex-grow flex flex-col justify-between">
+        </button>
+        <div className="flex-grow flex flex-col justify-between select-none">
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-4">
               <div className="select-none text-[12px] px-5 font-semibold text-[#9D9FA1]">
@@ -145,7 +173,9 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
                         <img className="w-[20px] h-[20px]" src={item.iconSrc} />
                         <div
                           className={`${
-                            hasActiveChild ? "select-none text-[#282828]" : "text-[#5F6980]"
+                            hasActiveChild
+                              ? "select-none text-[#282828]"
+                              : "text-[#5F6980]"
                           } text-[14px] font-semibold ${{}}`}
                         >
                           {item.label}
@@ -263,10 +293,19 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </div>
-      <div className="h-full flex-grow flex flex-col justify-start">
-        <div className="h-[66px] shrink-0 flex flex-row items-center px-8 gap-8 justify-end bg-[white]">
-          <div className="flex-grow border vorder box-border border-[#EAECF0] flex flex-row items-center pl-[19px] focus-within:border-[#333333] rounded-md">
-            <img src="/icons/search.svg" className="w-[20px] h-[20px]" />
+      <div className="h-full flex-grow flex flex-col justify-start overflow-auto">
+        <div className="h-[66px] max-[1024px]:h-[44px] max-[1024px]:mt-4 max-[1024px]:justify-between shrink-0 flex flex-row items-center px-8 max-[1024px]:px-4 gap-8 justify-end bg-[white]">
+          <button
+            onClick={() => setSideMenuCollapsed(!sideMenuCollapsed)}
+            className="min-[1024px]:hidden w-max hover:bg-[#F2F4F7] px-1 py-1 rounded select-none"
+          >
+            <img src="/logo/Branding.svg" />
+          </button>
+          <div className="flex-grow max-[1024px]:hidden border vorder box-border border-[#EAECF0] flex flex-row items-center pl-[19px] focus-within:border-[#333333] rounded-md">
+            <img
+              src="/icons/search.svg"
+              className="w-[20px] h-[20px] select-none pointer-events-none"
+            />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -282,12 +321,24 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
               indicator={iconbutton.indicator}
             />
           ))}
-          <button onClick={() => router.push("/profile")}>
+          <button className="shrink-0" onClick={() => router.push("/profile")}>
             <img
               src="/profile.png"
-              className="select-none pointer-events-none rounded-full w-[40px] h-[40px]"
+              className="select-none shrink-0 pointer-events-none rounded-full w-[40px] h-[40px]"
             />
           </button>
+        </div>
+        <div className="max-[1024px]:mx-4 max-[1024px]:my-4 min-[1024px]:hidden mx-8 mt-8 border vorder box-border border-[#EAECF0] flex flex-row items-center pl-[19px] focus-within:border-[#333333] rounded-md">
+          <img
+            src="/icons/search.svg"
+            className="w-[20px] h-[20px] select-none pointer-events-none"
+          />
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="flex-grow bg-transparent h-[46px] pl-[11px] pr-[19px] placeholder:text-[#9D9FA1] text-[14px] outline-none "
+            placeholder="Search"
+          />
         </div>
         {children}
       </div>
@@ -307,7 +358,7 @@ const IconButton = ({
   return (
     <button
       onClick={onClick}
-      className="w-[32px] h-[32px] hover:bg-[#F2F4F7] flex justify-center items-center rounded-md relative"
+      className="w-[32px] max-[1024px]:hidden h-[32px] hover:bg-[#F2F4F7] flex justify-center items-center rounded-md relative"
     >
       <img
         src={src}

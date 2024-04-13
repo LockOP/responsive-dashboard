@@ -6,7 +6,7 @@ export default function Metrics() {
   const metrics = useSelector((state: any) => state.dashboardReducer.metrics);
 
   return (
-    <div className="grid grid-cols-4 max-[1240px]:grid-cols-2 max-[1024px]:grid-cols-1 gap-8 select-none">
+    <div className="ani grid grid-cols-4 max-[1240px]:grid-cols-2 max-[1024px]:grid-cols-1 gap-8 max-[1024px]:gap-4 select-none">
       {metrics.map(
         (metric: {
           label: string;

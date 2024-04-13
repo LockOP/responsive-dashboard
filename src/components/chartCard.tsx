@@ -1,17 +1,19 @@
 "use client";
 import React from "react";
-import ApexChart from "./Chart/apexChart";
+// import ApexChart from "./Chart/apexChart";
+import ReactApexChart from "react-apexcharts";
+const ApexChart = ReactApexChart;
 
 export default function ChartCard() {
   return (
-    <div className="w-full bg-[white] rounded-xl flex flex-col">
+    <div className="bg-[white] rounded-xl flex flex-col">
       <div className="w-full flex flex-row justify-between items-center">
-        <div className="select-none text-[#282828] w-full text-[18px] font-semibold p-5 border-b border-[#EAECF0]">
+        <div className="max-[1024px]:px-4 max-[1024px]:py-[14px] select-none text-[#282828] w-full text-[18px] font-semibold p-5 border-b border-[#EAECF0]">
           Performance
         </div>
       </div>
       <div className="w-full flex flex-col justify-between items-center">
-        <div className="p-5 w-full">
+        <div className="p-5 max-[1024px]:p-0 w-full">
           <ApexChart
             height={356}
             type="area"
@@ -36,6 +38,7 @@ export default function ChartCard() {
                   },
                 },
               },
+
               dataLabels: {
                 enabled: false,
               },
@@ -44,13 +47,34 @@ export default function ChartCard() {
                 curve: "smooth",
               },
               xaxis: {
+                labels: {
+                  style: {
+                    colors: "#9D9FA1",
+                    fontSize: "12px",
+                  },
+                },
                 type: "category",
                 categories: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
               },
+              yaxis: {
+                labels: {
+                  style: {
+                    colors: "#9D9FA1",
+                    fontSize: "12px",
+                  },
+                },
+              },
               legend: {
-                itemMargin: { horizontal: 16 },
+                height: 48,
+                
+                position: "bottom",
+                horizontalAlign: "center",
+                itemMargin: { horizontal: 32, vertical: 0 },
                 markers: {
                   offsetX: -5,
+                },
+                labels: {
+                  colors: "#5F6980",
                 },
                 fontSize: "14px",
               },

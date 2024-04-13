@@ -7,7 +7,7 @@ import InstalledApps from "@/components/installedApps";
 export default function Page() {
 
   return (
-    <div className="flex-grow overflow-auto w-full flex flex-col p-8 gap-8 box-border">
+    <div className="flex-grow overflow-auto w-full flex flex-col p-8 max-[1024px]:p-4 max-[1024px]:pt-2  gap-8 max-[1024px]:gap-4 box-border">
       <PremiumBanner />
       <Metrics />
       <ChartCard />
