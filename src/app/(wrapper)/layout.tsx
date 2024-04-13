@@ -97,11 +97,11 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
     },
     {
       iconSrc: "/icons/Folder.svg",
-      label: "File Manageer",
+      label: "File Manager",
       children: [
         {
-          label: "File Manageer",
-          path: "/fileManageer",
+          label: "File Manager",
+          path: "/fileManager",
         },
       ],
     },
@@ -115,8 +115,8 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="bg-[#F2F4F7] w-screen h-screen flex flex-row">
-      <div className="h-full bg-[white] w-[232px] shrink-0 flex flex-col">
-        <div className="px-5 pt-[23.26px] mb-[54px]">
+      <div className="h-full bg-[white] w-[232px] shrink-0 flex flex-col overflow-y-auto">
+        <div className="px-5 pt-[23.26px] mb-[54px] select-none pointer-events-none">
           <img src="/logo/Branding.svg" />
         </div>
         <div className="flex-grow flex flex-col justify-between">
@@ -145,7 +145,7 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
                         <img className="w-[20px] h-[20px]" src={item.iconSrc} />
                         <div
                           className={`${
-                            hasActiveChild ? "text-[#282828]" : "text-[#5F6980]"
+                            hasActiveChild ? "select-none text-[#282828]" : "text-[#5F6980]"
                           } text-[14px] font-semibold ${{}}`}
                         >
                           {item.label}
@@ -157,7 +157,7 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
                         {item.children.map((child, index) => {
                           return (
                             <button
-                              className={`${
+                              className={`select-none ${
                                 pathname.endsWith(child.path)
                                   ? "text-[#282828]"
                                   : "text-[#5F6980]"
@@ -175,7 +175,7 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
                 })}
                 bordered={false}
                 defaultActiveKey={[1]}
-                expandIconPosition="right"
+                expandIconPosition="end"
                 expandIcon={({ isActive }) => (
                   <div className={`${isActive ? "rotate-180" : "rotate-0"}`}>
                     <img src="/icons/chevron-down.svg" />
@@ -205,7 +205,7 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
                       <div className="flex flex-row gap-2">
                         <img className="w-[20px] h-[20px]" src={item.iconSrc} />
                         <div
-                          className={`text-[#5F6980] text-[14px] font-semibold ${{}}`}
+                          className={`select-none text-[#5F6980] text-[14px] font-semibold ${{}}`}
                         >
                           {item.label}
                         </div>
@@ -216,7 +216,7 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
                         {item.children.map((child, index) => {
                           return (
                             <button
-                              className={`${
+                              className={`select-none ${
                                 pathname.endsWith(child.path)
                                   ? "text-[#282828]"
                                   : "text-[#5F6980]"
@@ -234,7 +234,7 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
                 })}
                 bordered={false}
                 defaultActiveKey={[1]}
-                expandIconPosition="right"
+                expandIconPosition="end"
                 expandIcon={({ isActive }) => (
                   <div className={`${isActive ? "rotate-180" : "rotate-0"}`}>
                     <img src="/icons/chevron-down.svg" />
@@ -282,7 +282,7 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
               indicator={iconbutton.indicator}
             />
           ))}
-          <button>
+          <button onClick={() => router.push("/profile")}>
             <img
               src="/profile.png"
               className="select-none pointer-events-none rounded-full w-[40px] h-[40px]"

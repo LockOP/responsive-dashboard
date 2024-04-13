@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function InstalledApps() {
   const dispatch = useDispatch();
-  const { installedApps } = useSelector((state: any) => ({
-    installedApps: state.dashboardReducer.installedApps,
-  }));
+  const installedApps = useSelector(
+    (state: any) => state.dashboardReducer.installedApps
+  );
 
   return (
     <div className="w-full bg-[white] rounded-xl flex flex-col">
       <div className="w-full flex flex-row justify-between items-center">
-        <div className="text-[#282828] text-[18px] font-semibold p-5 border-b border-[#EAECF0]">
+        <div className="select-none text-[#282828] w-full text-[18px] font-semibold p-5 border-b border-[#EAECF0]">
           Installed apps
         </div>
       </div>
@@ -37,7 +37,7 @@ export default function InstalledApps() {
                     index < installedApps.page * installedApps.size
                 )
                 .map((installedApp: any) => (
-                  <tr key={installedApp.name} className="">
+                  <tr key={installedApp.name} className="hover:bg-[#F9FAFB]">
                     <td className="pl-6 py-4 ">
                       <div className="w-max flex flex-row items-center gap-3">
                         <div className="w-[44px] h-[44px] flex justify-center items-center rounded-[9.43px] shadow-custom">

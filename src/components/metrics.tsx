@@ -3,12 +3,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 export default function Metrics() {
-  const { metrics } = useSelector((state: any) => ({
-    metrics: state.dashboardReducer.metrics,
-  }));
+  const metrics = useSelector((state: any) => state.dashboardReducer.metrics);
 
   return (
-    <div className="grid grid-cols-4 gap-8">
+    <div className="grid grid-cols-4 max-[1240px]:grid-cols-2 gap-8 select-none">
       {metrics.map(
         (metric: {
           label: string;
@@ -46,7 +44,7 @@ const MetricCard = ({
     return parts.join(".");
   }
   return (
-    <div className="flex-grow box-border p-5 rounded-xl bg-[white] flex-col gap-8 shadow-custom">
+    <div className="flex-grow border hover:border-[#424242] box-border p-5 rounded-xl bg-[white] flex-col gap-8 shadow-custom">
       <div className="w-full flex flex-col">
         <div className="text-[#5F6980] text-[16px]">{label}</div>
         <div className="text-[26px] font-semibold">
