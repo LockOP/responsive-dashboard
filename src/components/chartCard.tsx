@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-// import ApexChart from "./Chart/apexChart";
-import ReactApexChart from "react-apexcharts";
-const ApexChart = ReactApexChart;
+import ApexChart from "./Chart/apexChart";
+// import ReactApexChart from "react-apexcharts";
+// const ApexChart = ReactApexChart;
 
 export default function ChartCard() {
   return (
