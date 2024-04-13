@@ -1,9 +1,8 @@
 "use client";
 import React from "react";
-import ReactApexChart from "react-apexcharts";
+import ApexChart from "./Chart/apexChart";
 
 export default function ChartCard() {
-
   return (
     <div className="w-full bg-[white] rounded-xl flex flex-col">
       <div className="w-full flex flex-row justify-between items-center">
@@ -13,7 +12,7 @@ export default function ChartCard() {
       </div>
       <div className="w-full flex flex-col justify-between items-center">
         <div className="p-5 w-full">
-          <ReactApexChart
+          <ApexChart
             height={356}
             type="area"
             series={[
@@ -26,16 +25,15 @@ export default function ChartCard() {
                 data: [200, 180, 320, 400, 200, 220, 180],
               },
             ]}
-            
             options={{
-              colors: ["#679CF6","#20C997"],
+              colors: ["#679CF6", "#20C997"],
               chart: {
                 type: "area",
                 toolbar: {
                   show: false,
-                  tools : {
-                    zoom: false
-                  }
+                  tools: {
+                    zoom: false,
+                  },
                 },
               },
               dataLabels: {
@@ -52,7 +50,7 @@ export default function ChartCard() {
               legend: {
                 itemMargin: { horizontal: 16 },
                 markers: {
-                  offsetX: -5
+                  offsetX: -5,
                 },
                 fontSize: "14px",
               },
