@@ -28,6 +28,18 @@ export default function ChartCard() {
               },
             ]}
             options={{
+              grid: {
+                yaxis: {
+                  lines: {
+                    show: false,
+                  },
+                },
+                xaxis: {
+                  lines: {
+                    show: false,
+                  },
+                },
+              },
               colors: ["#679CF6", "#20C997"],
               chart: {
                 type: "area",
@@ -38,7 +50,6 @@ export default function ChartCard() {
                   },
                 },
               },
-
               dataLabels: {
                 enabled: false,
               },
@@ -47,6 +58,9 @@ export default function ChartCard() {
                 curve: "smooth",
               },
               xaxis: {
+                axisBorder: {
+                  show: false,
+                },
                 labels: {
                   style: {
                     colors: "#9D9FA1",
@@ -57,6 +71,9 @@ export default function ChartCard() {
                 categories: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
               },
               yaxis: {
+                axisBorder: {
+                  show: false,
+                },
                 labels: {
                   style: {
                     colors: "#9D9FA1",
@@ -66,7 +83,6 @@ export default function ChartCard() {
               },
               legend: {
                 height: 48,
-                
                 position: "bottom",
                 horizontalAlign: "center",
                 itemMargin: { horizontal: 32, vertical: 0 },
