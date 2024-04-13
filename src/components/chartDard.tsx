@@ -6,30 +6,29 @@ export default function ChartCard() {
   const data = [
     { year: "1991", value: 3, type: "a" },
     { year: "1992", value: 4, type: "a" },
-    { year: "1993", value: 3.5, type: "a" },
+    { year: "1993", value: 3, type: "a" },
     { year: "1994", value: 5, type: "a" },
-    { year: "1995", value: 4.9, type: "a" },
+    { year: "1995", value: 4, type: "a" },
     { year: "1996", value: 6, type: "a" },
     { year: "1997", value: 7, type: "a" },
     { year: "1998", value: 9, type: "a" },
-    { year: "1999", value: 13, type: "a" },
+    { year: "1999", value: 3, type: "a" },
     { year: "1991", value: 2, type: "b" },
     { year: "1992", value: 5, type: "b" },
-    { year: "1993", value: 6.5, type: "b" },
+    { year: "1993", value: 6, type: "b" },
     { year: "1994", value: 4, type: "b" },
-    { year: "1995", value: 7.9, type: "b" },
+    { year: "1995", value: 7, type: "b" },
     { year: "1996", value: 3, type: "b" },
     { year: "1997", value: 1, type: "b" },
     { year: "1998", value: 7, type: "b" },
-    { year: "1999", value: 11, type: "b" },
+    { year: "1999", value: 1, type: "b" },
   ];
 
   const config = {
     data,
     xField: "year",
     yField: "value",
-
-    shapeField: "smooth",
+    colorField: "type",
   };
 
   return (
@@ -40,11 +39,12 @@ export default function ChartCard() {
         </div>
       </div>
       <div className="w-full flex flex-row justify-between items-center">
-        <div className="p-5">
+        <div className="p-5 w-full">
           <Line
             {...config}
-            style={{ innerWidth: 2, outerWidth: "100%" }}
-            colorField="type"
+            height={276}
+            shapeField="smooth"
+            style={{ outerWidth: "100%" }}
             interaction={{
               tooltip: {
                 marker: false,
@@ -63,7 +63,7 @@ export default function ChartCard() {
                 },
               },
             }}
-          />{" "}
+          />
         </div>
       </div>
     </div>

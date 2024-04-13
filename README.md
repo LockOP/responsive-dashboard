@@ -38,8 +38,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 # Libraries installed
 1. npm i redux react-redux @reduxjs/toolkit
 
-
 # Fix for ERR_UNSUPPORTED_ESM_URL_SCHEME
-postcss.config.mjs to postcss.config.cjs
+postcss.config.mjs to postcss.config.cjs or .js
 And then change the export from:
 export default config; - to - module.exports = config;

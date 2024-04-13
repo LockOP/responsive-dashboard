@@ -1,7 +1,12 @@
+import Link from "next/link";
+
 export default function Page() {
   return (
-    <main className="">
-      hi
-    </main>
+    <div className="flex-grow overflow-auto w-full flex flex-row p-8 gap-1 box-border">
+      Sample Page. Nothing to show here. Go back to -
+      <Link href="/analytics" className="text-[blue] hover:underline">
+        Analytics
+      </Link>
+    </div>
   );
 }

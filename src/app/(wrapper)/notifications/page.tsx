@@ -1,10 +1,12 @@
-"use client";
-import { AnyNaptrRecord } from "dns";
-import { useSelector } from "react-redux";
+import Link from "next/link";
 
 export default function Page() {
-  const { stateData } = useSelector((state: any) => ({
-    stateData: state.dashboardReducer.stateData,
-  })); // const a = {obj} instead of const a = obj.a
-  return <div className="">{stateData}</div>;
+  return (
+    <div className="flex-grow overflow-auto w-full flex flex-row p-8 gap-1 box-border">
+      Sample Page. Nothing to show here. Go back to -
+      <Link href="/analytics" className="text-[blue] hover:underline">
+        Analytics
+      </Link>
+    </div>
+  );
 }
