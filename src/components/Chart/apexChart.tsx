@@ -13,3 +13,5 @@ export default function ApexChart(props: any) {
 
   return hasType && Chart && <Chart {...props} />;
 }
+// due to window not defined error this method is used to use ReactApexCharts
+// https://blog.nirdeshpokhrel.com.np/nextjs-window-is-not-defined-react-apexcharts
