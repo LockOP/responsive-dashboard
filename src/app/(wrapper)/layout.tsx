@@ -135,7 +135,7 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
     <div className="bg-[#F2F4F7] max-[1024px]:bg-[white] ani w-screen h-screen flex flex-row">
       <div
         ref={ref}
-        className={`max-[1024px]:absolute border-b border-transparent max-[1024px]:shadow-2xl ${
+        className={`z-50 max-[1024px]:absolute border-b border-transparent max-[1024px]:shadow-2xl ${
           sideMenuCollapsed
             ? "max-[1024px]:translate-x-[0%]"
             : "max-[1024px]:translate-x-[-100%]"

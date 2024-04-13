@@ -11,10 +11,24 @@ export default function InstalledApps() {
 
   return (
     <div className="w-full bg-[white] rounded-xl flex flex-col select-none">
-      <div className="w-full flex flex-row justify-between items-center">
-        <div className="max-[1024px]:px-4 max-[1024px]:py-[14px] select-none text-[#282828] w-full text-[18px] font-semibold p-5 border-b border-[#EAECF0]">
+      <div className="w-full flex flex-row justify-between items-centermax-[1024px]:px-4 max-[1024px]:py-[14px] p-5 border-b border-[#EAECF0]">
+        <div className="select-none text-[#282828] w-full text-[18px] font-semibold">
           Installed apps
         </div>
+        <button className="w-[24px] h-[24px] hover:bg-[#F2F4F7] flex justify-center items-center relative select-none group">
+          <img src="/icons/DotsVertical.svg" />
+          <div className="absolute z-[10] w-[100px] hidden group-focus:block box-border top-0 right-0 shadow-lg bg-[white] rounded translate-y-8 border border-[#EAECF0]">
+            <button className="w-full text-ellipsis text-[14px] px-3 py-2 hover:bg-[#F2F4F7]">
+              Action 1
+            </button>
+            <button className="w-full text-ellipsis text-[14px] px-3 py-2 hover:bg-[#F2F4F7]">
+              Action 2
+            </button>
+            <button className="w-full text-ellipsis text-[14px] px-3 py-2 hover:bg-[#F2F4F7]">
+              Action 3
+            </button>
+          </div>
+        </button>
       </div>
       <div className="w-full flex flex-col justify-between items-center">
         <div className="w-full overflow-auto">
