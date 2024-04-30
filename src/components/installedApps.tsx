@@ -17,7 +17,7 @@ export default function InstalledApps() {
         </div>
         <button className="w-[24px] h-[24px] hover:bg-[#F2F4F7] flex justify-center items-center relative select-none group">
           <img src="/icons/DotsVertical.svg" />
-          <div className="absolute z-[10] w-[100px] hidden group-focus:block box-border top-0 right-0 shadow-lg bg-[white] rounded translate-y-8 border border-[#EAECF0]">
+          <div className="absolute z-[10] w-[100px] block opacity-0 pointer-events-none translate-y-[-10%] ani group-focus:opacity-100 group-focus:pointer-events-auto box-border top-0 right-0 shadow-lg bg-[white] rounded group-focus:translate-y-8 border border-[#EAECF0]">
             <button className="w-full text-ellipsis text-[14px] px-3 py-2 hover:bg-[#F2F4F7]">
               Action 1
             </button>
